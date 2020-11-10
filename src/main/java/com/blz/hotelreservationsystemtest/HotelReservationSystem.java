@@ -3,6 +3,8 @@ package com.blz.hotelreservationsystemtest;
 public class HotelReservationSystem {
 	private String hotelName;
 	private int regularRates;
+	private int weekDayRates;
+	private int weekEndDayRates;
 	
 	public HotelReservationSystem() {
 		
@@ -11,6 +13,23 @@ public class HotelReservationSystem {
 		super();
 		this.hotelName = hotelName;
 		this.regularRates = regularRates;
+	}
+	public HotelReservationSystem(String hotelName, int weekDayRates ,int weekEndDayRates) {
+		this.hotelName = hotelName;
+		this.weekDayRates = weekDayRates;
+		this.weekEndDayRates = weekEndDayRates;
+	}
+	public int getWeekDayRates() {
+		return weekDayRates;
+	}
+	public void setWeekDayRates(int weekDayRates) {
+		this.weekDayRates = weekDayRates;
+	}
+	public int getWeekEndDayRates() {
+		return weekEndDayRates;
+	}
+	public void setWeekEndDayRates(int weekEndDayRates) {
+		this.weekEndDayRates = weekEndDayRates;
 	}
 	public String getHotelName() {
 		return hotelName;
@@ -26,8 +45,10 @@ public class HotelReservationSystem {
 	}
 	@Override
 	public String toString() {
-		return "HotelReservationSystem [hotelName=" + hotelName + ", regularRates=" + regularRates + "]";
+		return "HotelReservationSystem [hotelName=" + hotelName + ", weekDayRates=" + weekDayRates
+				+ ", weekEndDayRates=" + weekEndDayRates + "]";
 	}
+	
 	
 	
 

@@ -13,10 +13,10 @@ public class HotelReservationSystemTest {
 	@Test
 	public void given3Hotels_WhenAddedToHotelMap_SizeOfMapIs3() {
 		HotelReservationSystemMethods.addHotel("LakeWood", 110);
-		HotelReservationSystemMethods.addHotel("Bridgewood", 160);
+		HotelReservationSystemMethods.addHotel("Bridgewood", 150);
 		HotelReservationSystemMethods.addHotel("Ridgewood", 220);
 		HotelReservationSystemMethods.printHotel();
-		assertEquals(6, HotelReservationSystemMethods.countHotels());
+		assertEquals(9, HotelReservationSystemMethods.countHotels());
 	}
 
 	// Test UC:2
@@ -26,5 +26,15 @@ public class HotelReservationSystemTest {
 		HotelReservationSystemMethods.printHotel(result);
 		assertEquals("LakeWood 220", result);
 	}
+	
+	// Test UC:3
+		@Test
+		public void given3Hotels_WhenAddedToHotelWithWeekDayAndWeekEndDayRates_SizeOfMapIs3() {
+			HotelReservationSystemMethods.addHotel("LakeWood", 110,90);
+			HotelReservationSystemMethods.addHotel("Bridgewood",150,50);
+			HotelReservationSystemMethods.addHotel("Ridgewood", 220,150);
+			HotelReservationSystemMethods.printHotel();
+			assertEquals(6, HotelReservationSystemMethods.countHotels());
+		}
 
 }

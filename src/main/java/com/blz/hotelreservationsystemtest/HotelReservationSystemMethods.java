@@ -64,6 +64,14 @@ public class HotelReservationSystemMethods {
 		return hotelName + " " + cheapestRate;
 	}
 
+	
+	//UseCase : 3
+	
+	public static void addHotel(String hotelName, int weekDayRates,int weekEndDayRates) {
+		HotelReservationSystem hotelReservationSystem = new HotelReservationSystem(hotelName,weekDayRates,weekEndDayRates);
+		hotelMap.add(hotelReservationSystem);
+	}
+	
 	public static void printHotel() {
 		hotelMap.stream().forEach(System.out::println);
 	}
