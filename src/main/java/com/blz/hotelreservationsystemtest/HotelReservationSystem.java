@@ -3,6 +3,10 @@ package com.blz.hotelreservationsystemtest;
 public class HotelReservationSystem {
 	private String hotelName;
 	private int regularRates;
+	
+	public HotelReservationSystem() {
+		
+	}
 	public HotelReservationSystem(String hotelName, int regularRates) {
 		super();
 		this.hotelName = hotelName;
