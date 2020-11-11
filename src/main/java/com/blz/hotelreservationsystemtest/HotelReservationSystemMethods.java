@@ -17,7 +17,7 @@ public class HotelReservationSystemMethods {
 	private static ArrayList<HotelReservationSystem> hotelMap = new ArrayList<>();
 	private static ArrayList<HotelReservationSystem> hotelDetailsList = new ArrayList<>();
 	public static ArrayList<String> strDays = new ArrayList<String>(
-			Arrays.asList("Monday", "Tuesday", "Wednesday", "Thusday", "Friday"));
+			Arrays.asList("MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY"));
 
 	// UseCase: 1
 	public static void addHotel(String hotelName, int regularRates) {
@@ -48,6 +48,7 @@ public class HotelReservationSystemMethods {
 		LocalDate dateInput_2 = convertStringToDate(input_2);
 		DayOfWeek dayOfWeek_1 = getDays(dateInput_1);
 		DayOfWeek dayOfWeek_2 = getDays(dateInput_2);
+		System.out.println(dayOfWeek_1);
 		int bookingDays = 0;
 		bookingDays = (int) ChronoUnit.DAYS.between(dateInput_1, dateInput_2) + 1;
 		hotelMap.add(new HotelReservationSystem("LakeWood", 110));
@@ -65,14 +66,50 @@ public class HotelReservationSystemMethods {
 		return hotelName + " " + cheapestRate;
 	}
 
-	
-	//UseCase : 3
-	
-	public static void addHotel(String hotelName, int weekDayRates,int weekEndDayRates) {
-		HotelReservationSystem hotelReservationSystem = new HotelReservationSystem(hotelName,weekDayRates,weekEndDayRates);
+	// UseCase : 3
+
+	public static void addHotel(String hotelName, int weekDayRates, int weekEndDayRates) {
+		HotelReservationSystem hotelReservationSystem = new HotelReservationSystem(hotelName, weekDayRates,
+				weekEndDayRates);
 		hotelDetailsList.add(hotelReservationSystem);
 	}
-	
+
+	// UseCase: 4
+	public static String getCheapestHotelForWeekAndWeeend(String input_1, String input_2) {
+		LocalDate dateInput_1 = convertStringToDate(input_1);
+		LocalDate dateInput_2 = convertStringToDate(input_2);
+		DayOfWeek dayOfWeek_1 = getDays(dateInput_1);
+		DayOfWeek dayOfWeek_2 = getDays(dateInput_2);
+
+		hotelDetailsList.add(new HotelReservationSystem("LakeWood", 110, 90));
+		hotelDetailsList.add(new HotelReservationSystem("BridgeWood", 150, 50));
+		hotelDetailsList.add(new HotelReservationSystem("RidgeWood", 220, 150));
+		int rent = 0;
+		for (int i = 0; i < hotelDetailsList.size(); i++) {
+			if (strDays.contains(dayOfWeek_1) || strDays.contains(dayOfWeek_2)) {
+				rent = rent + hotelDetailsList.get(i).getWeekEndDayRates();
+				System.out.println(rent);
+				hotelDetailsList.get(i).setWeekEndDayRates(rent);
+
+			} else {
+				rent = rent + hotelDetailsList.get(i).getWeekDayRates();
+				System.out.println(rent);
+				hotelDetailsList.get(i).setWeekDayRates(rent);
+			}
+
+		}
+		for (int i = 0; i < hotelDetailsList.size(); i++) {
+			int temp = hotelDetailsList.get(i).getWeekDayRates() + hotelDetailsList.get(i).getWeekEndDayRates();
+			hotelMap.get(i).setRegularRates(temp);
+		}
+		String hotelName = hotelMap.stream().min(Comparator.comparing(HotelReservationSystem::getRegularRates)).get()
+				.getHotelName();
+		int cheapestRate = hotelMap.stream().min(Comparator.comparing(HotelReservationSystem::getRegularRates)).get()
+				.getRegularRates();
+
+		return hotelName + " " + cheapestRate;
+	}
+
 	public static void printHotel() {
 		hotelMap.stream().forEach(System.out::println);
 		hotelDetailsList.stream().forEach(System.out::println);

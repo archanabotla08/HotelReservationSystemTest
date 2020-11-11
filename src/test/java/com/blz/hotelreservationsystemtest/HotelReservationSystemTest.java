@@ -36,5 +36,11 @@ public class HotelReservationSystemTest {
 			HotelReservationSystemMethods.printHotel();
 			assertEquals(3, HotelReservationSystemMethods.countHotels());
 		}
-
+	// Test UC:4
+		@Test
+		public void given2Dates_GetCheapestHotelByWeekAndWeekendDays() {
+			String result = HotelReservationSystemMethods.getCheapestHotelForWeekAndWeeend("11Sep2020", "12Sep2020");
+			HotelReservationSystemMethods.printHotel("\n"+result+" \n");
+			assertEquals("LakeWood 200", result);
+		}
 }
