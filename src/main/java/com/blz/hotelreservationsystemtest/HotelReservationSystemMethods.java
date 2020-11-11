@@ -16,6 +16,8 @@ import java.util.stream.Stream;
 public class HotelReservationSystemMethods {
 	private static ArrayList<HotelReservationSystem> hotelMap = new ArrayList<>();
 	private static ArrayList<HotelReservationSystem> hotelDetailsList = new ArrayList<>();
+	private static ArrayList<HotelReservationSystem> hotelDetailsListRatings = new ArrayList<>();
+	
 	public static ArrayList<String> strDays = new ArrayList<String>(
 			Arrays.asList("MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY"));
 
@@ -110,9 +112,17 @@ public class HotelReservationSystemMethods {
 		return hotelName + " " + cheapestRate;
 	}
 
+	// UseCase : 5
+	public static void addHotel(String hotelName, int weekDayRates, int weekEndDayRates,int ratings) {
+		HotelReservationSystem hotelReservationSystem = new HotelReservationSystem(hotelName, weekDayRates,
+				weekEndDayRates, ratings);
+		hotelDetailsListRatings.add(hotelReservationSystem);
+	}
+
 	public static void printHotel() {
 		hotelMap.stream().forEach(System.out::println);
 		hotelDetailsList.stream().forEach(System.out::println);
+		hotelDetailsListRatings.stream().forEach(System.out::println);
 	}
 
 	public static void printHotel(String result) {

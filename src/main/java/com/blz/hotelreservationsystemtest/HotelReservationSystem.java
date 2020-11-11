@@ -5,6 +5,7 @@ public class HotelReservationSystem {
 	private int regularRates;
 	private int weekDayRates;
 	private int weekEndDayRates;
+	private int ratings;
 	
 	public HotelReservationSystem() {
 		
@@ -18,6 +19,12 @@ public class HotelReservationSystem {
 		this.hotelName = hotelName;
 		this.weekDayRates = weekDayRates;
 		this.weekEndDayRates = weekEndDayRates;
+	}
+	public HotelReservationSystem(String hotelName, int weekDayRates ,int weekEndDayRates, int ratings) {
+		this.hotelName = hotelName;
+		this.weekDayRates = weekDayRates;
+		this.weekEndDayRates = weekEndDayRates;
+		this.ratings = ratings;
 	}
 	public int getWeekDayRates() {
 		return weekDayRates;

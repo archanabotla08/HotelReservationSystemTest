@@ -43,4 +43,13 @@ public class HotelReservationSystemTest {
 			HotelReservationSystemMethods.printHotel("\n"+result+" \n");
 			assertEquals("LakeWood 200", result);
 		}
+	// Test UC: 5
+		@Test
+		public void given3Hotels_WhenAddedToHotelWithRatings_SizeOf3() {
+			HotelReservationSystemMethods.addHotel("LakeWood", 110,90,3);
+			HotelReservationSystemMethods.addHotel("Bridgewood",150,50,4);
+			HotelReservationSystemMethods.addHotel("Ridgewood", 220,150,5);
+			assertEquals(6, HotelReservationSystemMethods.countHotels());
+		}
+	
 }
