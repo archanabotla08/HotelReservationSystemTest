@@ -16,14 +16,14 @@ public class HotelReservationSystemTest {
 		HotelReservationSystemMethods.addHotel("Bridgewood", 150);
 		HotelReservationSystemMethods.addHotel("Ridgewood", 220);
 		HotelReservationSystemMethods.printHotel();
-		assertEquals(9, HotelReservationSystemMethods.countHotels());
+		assertEquals(6, HotelReservationSystemMethods.countHotels());
 	}
 
 	// Test UC:2
 	@Test
 	public void given2Dates_GetCheapestHotel() {
 		String result = HotelReservationSystemMethods.getCheapestHotel("10Sep2020", "11Sep2020");
-		HotelReservationSystemMethods.printHotel(result);
+		HotelReservationSystemMethods.printHotel("\n" + result + "\n");
 		assertEquals("LakeWood 220", result);
 	}
 	
@@ -34,7 +34,7 @@ public class HotelReservationSystemTest {
 			HotelReservationSystemMethods.addHotel("Bridgewood",150,50);
 			HotelReservationSystemMethods.addHotel("Ridgewood", 220,150);
 			HotelReservationSystemMethods.printHotel();
-			assertEquals(6, HotelReservationSystemMethods.countHotels());
+			assertEquals(3, HotelReservationSystemMethods.countHotels());
 		}
 
 }
